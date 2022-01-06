@@ -1,11 +1,9 @@
+<template>
+  <a href>测试一下</a>
+</template>
 
-
-<script lang="ts" setup>
-import { ref } from 'vue'
-
-const activeIndex = ref('1')
-const activeIndex2 = ref('1')
-const handleSelect = (key: string, keyPath: string[]) => {
-  console.log(key, keyPath)
-}
+<script setup>
+console.log('测试下')
 </script>
+
+
