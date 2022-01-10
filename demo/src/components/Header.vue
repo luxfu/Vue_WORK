@@ -1,62 +1,72 @@
 <template>
-  <el-menu
-    :default-active="activeIndex"
-    class="el-menu-demo"
-    mode="horizontal"
-    @select="handleSelect"
-  >
-    <el-menu-item index="1">Processing Center</el-menu-item>
-    <el-sub-menu index="2">
-      <template #title>Workspace</template>
-      <el-menu-item index="2-1">item one</el-menu-item>
-      <el-menu-item index="2-2">item two</el-menu-item>
-      <el-menu-item index="2-3">item three</el-menu-item>
-      <el-sub-menu index="2-4">
-        <template #title>item four</template>
-        <el-menu-item index="2-4-1">item one</el-menu-item>
-        <el-menu-item index="2-4-2">item two</el-menu-item>
-        <el-menu-item index="2-4-3">item three</el-menu-item>
-      </el-sub-menu>
-    </el-sub-menu>
-    <el-menu-item index="3" disabled>Info</el-menu-item>
-    <el-menu-item index="4">Orders</el-menu-item>
-  </el-menu>
-  <div class="h-6"></div>
-  <el-menu
-    :default-active="activeIndex2"
-    class="el-menu-demo"
-    mode="horizontal"
-    background-color="#545c64"
-    text-color="#fff"
-    active-text-color="#ffd04b"
-    @select="handleSelect"
-  >
-    <el-menu-item index="1">Processing Center</el-menu-item>
-    <el-sub-menu index="2">
-      <template #title>Workspace</template>
-      <el-menu-item index="2-1">item one</el-menu-item>
-      <el-menu-item index="2-2">item two</el-menu-item>
-      <el-menu-item index="2-3">item three</el-menu-item>
-      <el-sub-menu index="2-4">
-        <template #title>item four</template>
-        <el-menu-item index="2-4-1">item one</el-menu-item>
-        <el-menu-item index="2-4-2">item two</el-menu-item>
-        <el-menu-item index="2-4-3">item three</el-menu-item>
-      </el-sub-menu>
-    </el-sub-menu>
-    <el-menu-item index="3" disabled>Info</el-menu-item>
-    <el-menu-item index="4">Orders</el-menu-item>
-  </el-menu>
+  <div class="header">
+    <div class="logo">
+      <img src="../assets/mealux.png" alt="自动化测试" />
+    </div>
+    <div class="title"></div>
+    <div class="user">
+      <div class="message-center">
+        <el-icon class="el-icon-bell" :size="25" color="#ffffff">
+          <bell></bell>
+        </el-icon>
+      </div>
+      <div class="login">
+        <img src="../assets/img.jpg" alt="登录头像" />
+      </div>
+      <div class="username"></div>
+    </div>
+  </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
 
-const activeIndex = ref('1')
-const activeIndex2 = ref('1')
-const handleSelect = (key, keyPath) => {
-  console.log(key, keyPath)
-}
 </script>
+
+<style scoped>
+.header {
+  width: 100%;
+  height: 75px;
+  background-color: #0b5345;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo {
+  width: 75px;
+  height: 70px;
+}
+.logo img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+}
+.title {
+  width: 300px;
+  height: 75px;
+}
+.user {
+  width: 200px;
+  height: 75px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.message-center {
+  width: 35px;
+  height: 25px;
+}
+.login {
+  width: 75px;
+  height: 75px;
+}
+.login img {
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  margin: 5px;
+}
+</style>
 
 

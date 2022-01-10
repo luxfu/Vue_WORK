@@ -8,5 +8,10 @@
 </template>
 
 <style>
+html,
+body {
+  box-sizing: border-box;
+  margin: 0;
+}
 </style>
 
