@@ -13,13 +13,25 @@
       <div class="login">
         <img src="../assets/img.jpg" alt="登录头像" />
       </div>
-      <div class="username"></div>
+      <div class="username">
+        <el-dropdown>
+          <span class="el-dropdown-link">admin</span>
+          <el-icon class="el-icon--right">
+            <arrow-down />
+          </el-icon>
+          <template #dropdown>
+            <el-dropdown-menu>
+              <el-dropdown-item>用户中心</el-dropdown-item>
+              <el-dropdown-item>用户中心</el-dropdown-item>
+            </el-dropdown-menu>
+          </template>
+        </el-dropdown>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup>
-
 </script>
 
 <style scoped>
@@ -47,7 +59,7 @@
   height: 75px;
 }
 .user {
-  width: 200px;
+  width: 250px;
   height: 75px;
   display: flex;
   flex-direction: row;
@@ -55,6 +67,10 @@
 }
 .message-center {
   width: 35px;
+  height: 25px;
+}
+.message-center .el-icon svg {
+  width: 25px;
   height: 25px;
 }
 .login {
