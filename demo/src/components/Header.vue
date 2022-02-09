@@ -13,13 +13,29 @@
       <div class="login">
         <img src="../assets/img.jpg" alt="登录头像" />
       </div>
-      <div class="username"></div>
+      <div class="username">
+        <el-dropdown :hide-on-click="false">
+          <span class="el-dropdown-link">
+            {{username}}
+            <el-icon class="el-icon--right">
+              <arrow-down />
+            </el-icon>
+          </span>
+          <template #dropdown>
+            <el-dropdown-menu>
+              <el-dropdown-item>个人中心</el-dropdown-item>
+              <el-dropdown-item>退出登录</el-dropdown-item>
+              <el-dropdown-item>个性设置</el-dropdown-item>
+            </el-dropdown-menu>
+          </template>
+        </el-dropdown>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup>
-
+const username = "test"
 </script>
 
 <style scoped>
@@ -66,6 +82,9 @@
   height: 65px;
   border-radius: 50%;
   margin: 5px;
+}
+.el-dropdown {
+  color: var(--text-color);
 }
 </style>
 

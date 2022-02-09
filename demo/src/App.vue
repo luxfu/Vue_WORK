@@ -8,6 +8,7 @@
 </template>
 
 <style>
+@import '@/css/main.css';
 html,
 body {
   box-sizing: border-box;
