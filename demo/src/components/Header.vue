@@ -14,10 +14,9 @@
         <img src="../assets/img.jpg" alt="登录头像" />
       </div>
       <div class="username">
-<<<<<<< HEAD
         <el-dropdown :hide-on-click="false">
           <span class="el-dropdown-link">
-            {{username}}
+            {{ username }}
             <el-icon class="el-icon--right">
               <arrow-down />
             </el-icon>
@@ -27,17 +26,6 @@
               <el-dropdown-item>个人中心</el-dropdown-item>
               <el-dropdown-item>退出登录</el-dropdown-item>
               <el-dropdown-item>个性设置</el-dropdown-item>
-=======
-        <el-dropdown>
-          <span class="el-dropdown-link">admin</span>
-          <el-icon class="el-icon--right">
-            <arrow-down />
-          </el-icon>
-          <template #dropdown>
-            <el-dropdown-menu>
-              <el-dropdown-item>用户中心</el-dropdown-item>
-              <el-dropdown-item>用户中心</el-dropdown-item>
->>>>>>> 4a798e61a9456d26f01403f3d8ad60cfb41a4454
             </el-dropdown-menu>
           </template>
         </el-dropdown>
@@ -47,7 +35,7 @@
 </template>
 
 <script setup>
-const username = "test"
+const username = 'test'
 </script>
 
 <style scoped>
