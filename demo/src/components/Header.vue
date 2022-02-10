@@ -7,7 +7,7 @@
     <div class="user">
       <div class="message-center">
         <el-icon class="el-icon-bell" :size="25" color="#ffffff">
-          <bell></bell>
+          <bell />
         </el-icon>
       </div>
       <div class="login">
