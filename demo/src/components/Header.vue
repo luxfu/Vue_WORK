@@ -35,7 +35,9 @@
 </template>
 
 <script setup>
-const username = 'test'
+import { useStore } from 'vuex'
+const store = useStore()
+const username = store.state.username
 </script>
 
 <style scoped>
