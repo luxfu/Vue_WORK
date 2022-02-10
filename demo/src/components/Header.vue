@@ -1,13 +1,13 @@
 <template>
   <div class="header">
     <div class="logo">
-      <img src="../assets/mealux.png" alt="自动化测试" />
+      <img src="../assets/img/mealux.png" alt="自动化测试" />
     </div>
     <div class="title"></div>
     <div class="user">
       <el-tooltip
         effect="dark"
-        :content="messageCount?`有${messageCount}条未读消息`:`消息中心`"
+        :content="messageCount ? `有${messageCount}条未读消息` : `消息中心`"
         placement="bottom"
       >
         <div class="btn-bell">
@@ -20,7 +20,7 @@
         </div>
       </el-tooltip>
       <div class="login">
-        <img src="../assets/img.jpg" alt="登录头像" />
+        <img src="../assets/img/img.jpg" alt="登录头像" />
       </div>
       <div class="username">
         <el-dropdown :hide-on-click="false" @command="handleCommand">
@@ -32,7 +32,9 @@
           </span>
           <template #dropdown>
             <el-dropdown-menu>
-              <el-dropdown-item command="user-center">个人中心</el-dropdown-item>
+              <el-dropdown-item command="user-center"
+                >个人中心</el-dropdown-item
+              >
               <el-dropdown-item command="logout">退出登录</el-dropdown-item>
               <el-dropdown-item command="settings">个性设置</el-dropdown-item>
             </el-dropdown-menu>

@@ -8,11 +8,6 @@
 </template>
 
 <style>
-@import '@/css/main.css';
-html,
-body {
-  box-sizing: border-box;
-  margin: 0;
-}
+@import '@/assets/css/main.css';
 </style>
 
