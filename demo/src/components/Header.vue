@@ -5,16 +5,25 @@
     </div>
     <div class="title"></div>
     <div class="user">
-      <div class="message-center">
-        <el-icon class="el-icon-bell" :size="25" color="#ffffff">
-          <bell />
-        </el-icon>
-      </div>
+      <el-tooltip
+        effect="dark"
+        :content="messageCount?`有${messageCount}条未读消息`:`消息中心`"
+        placement="bottom"
+      >
+        <div class="btn-bell">
+          <router-link to="/messageCenter">
+            <el-icon class="el-icon-bell" :size="25" color="#ffffff">
+              <bell />
+            </el-icon>
+          </router-link>
+          <span class="btn-bell-badge"></span>
+        </div>
+      </el-tooltip>
       <div class="login">
         <img src="../assets/img.jpg" alt="登录头像" />
       </div>
       <div class="username">
-        <el-dropdown :hide-on-click="false">
+        <el-dropdown :hide-on-click="false" @command="handleCommand">
           <span class="el-dropdown-link">
             {{ username }}
             <el-icon class="el-icon--right">
@@ -23,9 +32,9 @@
           </span>
           <template #dropdown>
             <el-dropdown-menu>
-              <el-dropdown-item>个人中心</el-dropdown-item>
-              <el-dropdown-item>退出登录</el-dropdown-item>
-              <el-dropdown-item>个性设置</el-dropdown-item>
+              <el-dropdown-item command="user-center">个人中心</el-dropdown-item>
+              <el-dropdown-item command="logout">退出登录</el-dropdown-item>
+              <el-dropdown-item command="settings">个性设置</el-dropdown-item>
             </el-dropdown-menu>
           </template>
         </el-dropdown>
@@ -36,8 +45,22 @@
 
 <script setup>
 import { useStore } from 'vuex'
+import { useRouter } from 'vue-router'
+import { ElMessage } from 'element-plus'
 const store = useStore()
+const router = useRouter()
 const username = store.state.username
+const messageCount = store.state.messageCount
+const handleCommand = (command) => {
+  ElMessage.success(`click ${command}`)
+  if (command == 'usercenter') {
+    router.push('/usercenter')
+  } else if (command == 'settings') {
+    router.push('/settings')
+  } else if (command == 'loginout') {
+    router.push('/loginout')
+  }
+}
 </script>
 
 <style scoped>
@@ -71,13 +94,23 @@ const username = store.state.username
   flex-direction: row;
   align-items: center;
 }
-.message-center {
+.btn-bell {
+  position: relative;
   width: 35px;
   height: 25px;
 }
-.message-center .el-icon svg {
+.btn-bell .el-icon svg {
   width: 25px;
   height: 25px;
+}
+.btn-bell-badge {
+  position: absolute;
+  right: 7px;
+  width: 8px;
+  height: 8px;
+  color: white;
+  background-color: red;
+  border-radius: 4px;
 }
 .login {
   width: 75px;
