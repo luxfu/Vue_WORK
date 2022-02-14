@@ -83,6 +83,12 @@
   </div>
 </template>
 
+<script setup>
+const handleOpen = (key, keypath) => {
+  console.log(key, keypath)
+}
+</script>
+
 <style scoped>
 .el-menu {
   border: 0;
