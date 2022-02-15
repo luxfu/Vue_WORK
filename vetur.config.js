@@ -5,4 +5,4 @@ module.exports = {
     "vetur.experimental.templateInterpolationService": false,
   },
   // 普通项目采用默认配置 default: `[{ root: './' }]`
-};
+}

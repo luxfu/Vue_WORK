@@ -74,7 +74,7 @@
       <el-menu-item index="8">
         <template #title>
           <el-icon>
-            <more />
+            <more></more>
           </el-icon>
           <span>更多功能</span>
         </template>
