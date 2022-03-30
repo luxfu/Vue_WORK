@@ -4,81 +4,58 @@
       active-text-color="#ffd04b"
       background-color="#117A65"
       class="el-menu-vertical-demo"
-      default-active="2"
+      default-active=""
       text-color="#fff"
       @open="handleOpen"
       @close="handleClose"
+      router
     >
-      <el-menu-item index="1">
-        <template #title>
-          <el-icon>
-            <location />
-          </el-icon>
-          <span>系统首页</span>
+      <template v-for="item in items">
+        <template v-if="item.subs">
+          <el-sub-menu :index="item.index" :key="item.index">
+            <template #title>
+              <el-icon>
+                <component :is="item.icon"></component>
+              </el-icon>
+              <span>{{ item.title }}</span>
+            </template>
+            <template v-for="subItem in item.subs">
+              <el-sub-menu
+                v-if="subItem.subs"
+                :index="subItem.index"
+                :key="subItem.index"
+              >
+                <template #title>
+                  <el-icon>
+                    <component :is="item.icon"></component>
+                  </el-icon>
+                  <span>{{ subItem.title }}</span>
+                </template>
+                <el-menu-item
+                  v-for="(threeItem, i) in subItem.subs"
+                  :index="threeItem.index"
+                  :key="i"
+                >
+                  {{ threeItem.title }}
+                </el-menu-item>
+              </el-sub-menu>
+              <el-menu-item v-else :index="subItem.index" :key="subItem.index">
+                {{ subItem.title }}
+              </el-menu-item>
+            </template>
+          </el-sub-menu>
         </template>
-      </el-menu-item>
-      <el-sub-menu index="2">
-        <template #title>
-          <el-icon>
-            <files />
-          </el-icon>
-          <span>资源中心</span>
+        <template v-else>
+          <el-menu-item :index="item.index" :key="item.index">
+            <template #title>
+              <el-icon>
+                <component :is="item.icon"></component>
+              </el-icon>
+              <span>{{ item.title }}</span>
+            </template>
+          </el-menu-item>
         </template>
-        <el-menu-item index="2-1">用户中心</el-menu-item>
-        <el-menu-item index="2-3">服务器中心</el-menu-item>
-        <el-menu-item index="2-2">全局配置</el-menu-item>
-      </el-sub-menu>
-      <el-sub-menu index="3">
-        <template #title>
-          <el-icon>
-            <document />
-          </el-icon>
-          <span>测试用例</span>
-        </template>
-        <el-menu-item index="3-1">功能测试用例</el-menu-item>
-        <el-menu-item index="3-2">接口测试用例</el-menu-item>
-        <el-menu-item index="3-3">UI测试用例</el-menu-item>
-      </el-sub-menu>
-      <el-menu-item index="4">
-        <template #title>
-          <el-icon>
-            <notebook />
-          </el-icon>
-          <span>脚本中心</span>
-        </template>
-      </el-menu-item>
-      <el-menu-item index="5">
-        <template #title>
-          <el-icon>
-            <setting />
-          </el-icon>
-          <span>系统设置</span>
-        </template>
-      </el-menu-item>
-      <el-menu-item index="6">
-        <template #title>
-          <el-icon>
-            <management />
-          </el-icon>
-          <span>功能扩展</span>
-        </template>
-      </el-menu-item>
-      <el-menu-item index="7">
-        <template #title>
-          <el-icon>
-            <wallet />
-          </el-icon>
-          <span>捐助作者</span>
-        </template>
-      </el-menu-item>
-      <el-menu-item index="8">
-        <template #title>
-          <el-icon>
-            <more />
-          </el-icon>
-          <span>更多功能</span>
-        </template>
-      </el-menu-item>
+      </template>
     </el-menu>
   </div>
 </template>
@@ -87,6 +64,82 @@
 const handleOpen = (key, keypath) => {
   console.log(key, keypath)
 }
+const items = [
+  {
+    icon: 'location',
+    index: '/dashboard',
+    title: '系统首页',
+  },
+  {
+    icon: 'files',
+    index: '/table',
+    title: '资源中心',
+    subs: [
+      {
+        icon: '',
+        index: '/table',
+        title: '用户中心',
+      },
+      {
+        icon: '',
+        index: '/table',
+        title: '服务器中心',
+      },
+      {
+        icon: '',
+        index: '/table',
+        title: '全局配置',
+      },
+    ],
+  },
+  {
+    icon: 'document',
+    index: '/allcases',
+    title: '测试用例',
+    subs: [
+      {
+        icon: '',
+        index: '/functioncases',
+        title: '功能测试用例',
+      },
+      {
+        icon: '',
+        index: '/apicases',
+        title: '接口测试用例',
+      },
+      {
+        icon: '',
+        index: '/uicases',
+        title: 'UI测试用例',
+      },
+    ],
+  },
+  {
+    icon: 'notebook',
+    index: '/scripts',
+    title: '脚本中心',
+  },
+  {
+    icon: 'setting',
+    index: '/setting',
+    title: '系统设置',
+  },
+  {
+    icon: 'management',
+    index: '/extension',
+    title: '功能扩展',
+  },
+  {
+    icon: 'wallet',
+    index: '/donate',
+    title: '捐助作者',
+  },
+  {
+    icon: 'more',
+    index: '/more',
+    title: '更多功能',
+  },
+]
 </script>
 
 <style scoped>
